@@ -41,9 +41,9 @@ export default function Detail() {
 
   return (
     <View style={styles.container}>
-      <View styles={styles.header}>
-        ''
+      <View style={styles.header}>
         <Image source={logoImg} />
+
         <TouchableOpacity onPress={navigateBack}>
           <Feather name="arrow-left" size={28} color="#e82041" />
         </TouchableOpacity>
@@ -67,11 +67,12 @@ export default function Detail() {
         </Text>
       </View>
 
-      <View style={styles.contacBox}>
+      <View style={styles.contactBox}>
         <Text style={styles.heroTitle}>Salve o dia !</Text>
         <Text style={styles.heroTitle}>Seja o heroi desse caso.</Text>
 
-        <Text style={styles.heroTitle}>Entre em contato:</Text>
+        <Text style={styles.heroDescription}>Entre em contato:</Text>
+
         <View style={styles.actions}>
           <TouchableOpacity style={styles.action} onPress={sendWhats}>
             <Text style={styles.actionText}>WhatsApp</Text>

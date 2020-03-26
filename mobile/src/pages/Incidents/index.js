@@ -20,8 +20,6 @@ export default function Incidents() {
   }
 
   async function loadIncidents() {
-    console.log(incidents);
-
     if (loading) {
       return;
     }
@@ -32,11 +30,10 @@ export default function Incidents() {
 
     setLoading(true);
 
-    const response = await api.get("/incidents");
-    console.log(response);
+    const response = await api.get("/incidents", { params: { page } });
 
     setIncidents([...incidents, ...response.data]);
-    setTotal(response.headers["X-total-count"]);
+    setTotal(response.headers["x-total-count"]);
     setPage(page + 1);
     setLoading(false);
   }
@@ -46,16 +43,16 @@ export default function Incidents() {
   }, []);
 
   return (
-    <View styles={styles.container}>
-      <View styles={styles.header}>
+    <View style={styles.container}>
+      <View style={styles.header}>
         <Image source={logoImg} />
         <Text style={styles.headerText}>
-          Total de <Text style={styles.headerTextBold}>{total} Casos</Text>
+          Total de <Text style={styles.headerTextBold}>{`${total}`} Casos</Text>
         </Text>
       </View>
 
-      <Text styles={styles.title}>Bem-Vindo</Text>
-      <Text styles={styles.description}>
+      <Text style={styles.title}>Bem-Vindo</Text>
+      <Text style={styles.description}>
         Escolha um dos casos abaixo e salve o dia!
       </Text>
 
@@ -66,7 +63,7 @@ export default function Incidents() {
         showsVerticalScrollIndicator={false}
         onEndReached={loadIncidents}
         onEndReachedThreshold={0.2}
-        renderItem={({ item: incident }) => {
+        renderItem={({ item: incident }) => (
           <View style={styles.incident}>
             <Text style={styles.incidentProperty}>ONG:</Text>
             <Text style={styles.incidentValue}>{incident.name}</Text>
@@ -83,16 +80,16 @@ export default function Incidents() {
             </Text>
 
             <TouchableOpacity
-              style={styles.detailButton}
+              style={styles.detailsButton}
               onPress={() => {
                 navigateToDetails(incident);
               }}
             >
-              <Text style={styles.incidentValue}>Ver mais detalhes</Text>
-              <Feather name="arrow-right" size={16} color="e02041" />
+              <Text style={styles.detailsButtonText}>Ver mais detalhes</Text>
+              <Feather name="arrow-right" size={16} color="#e02041" />
             </TouchableOpacity>
-          </View>;
-        }}
+          </View>
+        )}
       />
     </View>
   );
