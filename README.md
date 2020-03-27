@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="460" height="300" src="frontend/src/assets/heroes.png">
+  <img width="460" src="frontend/src/assets/heroes.png">
 </p>
 
 #  Be The Hero
@@ -21,4 +21,5 @@ O Aplicativo foi desenvolvido com a stack Node, React e React Native, ultilizand
     - Expo
     - Expo Mail Composer
 
-
+Gostaria de dar uma atenção maior ao Celebrate, achei muito bacana trabalhar com ele, quando ocorre algum erro fica muito mais legivel qual a variavel que esta faltando na requisição, diferente do Yup.
+Outro comentário, essa é a primeira vez que utilizo o conceito de testes, achei interessante e fundamental aplicar este conceito em aplicações robustas.
